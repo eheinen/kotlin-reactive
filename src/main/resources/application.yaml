@@ -1,0 +1,23 @@
+management:
+  endpoints:
+    web:
+      path-mapping:
+        info: version
+        prometheus: metrics
+      exposure:
+        include: prometheus,health,info
+      base-path: /
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+info:
+  version: ${buildVersion}
+  revision: ${revision}
+  tag: ${tag}
+  buildNumber: ${buildNumber}
