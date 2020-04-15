@@ -17,9 +17,10 @@ class HmacResolverSecurityConfig {
         return httpSecurity
             .httpBasic().disable()
             .authorizeExchange()
-            .pathMatchers("/metrics", "/health", "/version", "/api/1/helloworld").permitAll()
+            .pathMatchers("/metrics", "/health", "/version", "/api/1/results").permitAll()
             .anyExchange().authenticated()
             .and()
+            .csrf().disable()
             .build()
     }
 }

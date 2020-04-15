@@ -19,13 +19,20 @@ repositories {
 dependencies {
 
     // Spring
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-actuator") {
+        exclude(group = "io.micrometer", module = "micrometer-core")
+    }
+
     implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
 
+    // Mongo DB
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+    testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+
     // Prometheus
-    implementation("io.micrometer:micrometer-registry-prometheus:1.4.0")
+    implementation("io.micrometer:micrometer-core:1.4.0")
 
     // Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -33,7 +40,7 @@ dependencies {
     // Kotlin
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {

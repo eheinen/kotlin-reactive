@@ -21,3 +21,11 @@ info:
   revision: ${revision}
   tag: ${tag}
   buildNumber: ${buildNumber}
+
+spring:
+  data:
+    mongodb:
+      database: local
+      host: localhost
+      port: 27017
+      auto-index-creation: off
